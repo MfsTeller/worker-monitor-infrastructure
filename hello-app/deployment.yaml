@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  selector:
+    matchLabels:
+      app: web-pod
+  replicas: 2
+  # Pod template
+  template:
+    metadata:
+      labels:
+        app: web-pod
+    spec:
+      # Container specification
+      containers:
+      - name: web-container
+        image: gcr.io/google-samples/hello-app:1.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment-v2
+spec:
+  selector:
+    matchLabels:
+      app: web-pod-v2
+  replicas: 2
+  # Pod template
+  template:
+    metadata:
+      labels:
+        app: web-pod-v2
+    spec:
+      # Container specification
+      containers:
+      - name: web-container-v2
+        image: gcr.io/google-samples/hello-app:2.0
+        ports:
+        - containerPort: 8080
+        

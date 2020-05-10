@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: NodePort
+  selector:
+    app: web-pod
+  externalIPs:
+    - 192.168.99.100
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service-v2
+spec:
+  type: NodePort
+  selector:
+    app: web-pod-v2
+  externalIPs:
+    - 192.168.99.100
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30003
