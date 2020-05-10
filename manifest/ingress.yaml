@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  rules:
+  - host: svc.cluster.local
+    http:
+      paths:
+      - path: /test
+        backend:
+          serviceName: nginx-service
+          servicePort: 80
