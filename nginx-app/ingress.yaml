@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: nginx-ingress
@@ -7,7 +7,7 @@ spec:
   - host: svc.cluster.local
     http:
       paths:
-      - path: /test
+      - path: /
         backend:
           serviceName: nginx-service
           servicePort: 80
